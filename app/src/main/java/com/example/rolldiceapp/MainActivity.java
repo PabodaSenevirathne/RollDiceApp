@@ -1,6 +1,7 @@
 package com.example.rolldiceapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.view.View;
@@ -17,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView result;
     private DatabaseHelper dbHandler;
+    private Button viewRecordButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         button = findViewById(R.id.button);
+        viewRecordButton = findViewById(R.id.viewRecordButton);
         imageView = findViewById(R.id.imageContainer);
         result = findViewById(R.id.result);
         dbHandler = new DatabaseHelper(this);
@@ -32,6 +35,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 rollDice();
+            }
+        });
+
+        viewRecordButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showRecordsFragment();
             }
         });
     }
@@ -71,4 +81,14 @@ public class MainActivity extends AppCompatActivity {
 
         Toast.makeText(this, "Roll added successfully", Toast.LENGTH_SHORT).show();
     }
+
+    // Show the fragment to view records
+    private void showRecordsFragment() {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, new ShowRecordsFragment())
+                .addToBackStack(null)
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                .commit();
+    }
+
 }

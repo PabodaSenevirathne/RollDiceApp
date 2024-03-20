@@ -12,7 +12,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "recordsDB";
     private static final String TABLE_RECORDS = "records";
     private static final String KEY_ID = "id";
-    public static final String KEY_ROLL_NUMBER = "roll_number";
+    public static final String KEY_ROLL_VALUE = "roll_value";
     private static final String KEY_RESULT = "result";
 
     public DatabaseHelper(Context context) {
@@ -23,7 +23,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String CREATE_RECORDS_TABLE = "CREATE TABLE " + TABLE_RECORDS + "("
                 + KEY_ID + " INTEGER PRIMARY KEY,"
-                + KEY_ROLL_NUMBER + " INTEGER,"
+                + KEY_ROLL_VALUE + " INTEGER,"
                 + KEY_RESULT + " INTEGER" + ")";
         db.execSQL(CREATE_RECORDS_TABLE);
     }
@@ -38,7 +38,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void addRoll(int rollNumber, int result) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(KEY_ROLL_NUMBER, rollNumber);
+        values.put(KEY_ROLL_VALUE, rollNumber);
         values.put(KEY_RESULT, result);
         db.insert(TABLE_RECORDS, null, values);
         db.close();
