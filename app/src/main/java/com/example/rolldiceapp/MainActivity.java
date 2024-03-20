@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 import java.util.Random;
 
@@ -13,6 +14,8 @@ public class MainActivity extends AppCompatActivity {
 
     private Button button;
     private ImageView imageView;
+
+    private TextView result;
     private DatabaseHelper dbHandler;
 
     @Override
@@ -22,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
         button = findViewById(R.id.button);
         imageView = findViewById(R.id.imageContainer);
+        result = findViewById(R.id.result);
         dbHandler = new DatabaseHelper(this);
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -36,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
     private void rollDice() {
         Random random = new Random();
         int rollNumber = random.nextInt(6) + 1; // Generate random number from 1 to 6
+
+        // Update dice image
         switch (rollNumber) {
             case 1:
                 imageView.setImageResource(R.drawable.dice_1);
@@ -56,8 +62,13 @@ public class MainActivity extends AppCompatActivity {
                 imageView.setImageResource(R.drawable.dice_1);
                 break;
         }
+
+        // Display roll result
+        result.setText("Result: " + rollNumber);
+
         // Add the roll to the database
         dbHandler.addRoll(rollNumber, rollNumber);
+
         Toast.makeText(this, "Roll added successfully", Toast.LENGTH_SHORT).show();
     }
 }

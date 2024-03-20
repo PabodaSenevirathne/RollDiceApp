@@ -1,16 +1,18 @@
 package com.example.rolldiceapp;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-public class DatabaseHelper extends SQLiteOpenHelper{
+
+public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "recordsDB";
     private static final String TABLE_RECORDS = "records";
     private static final String KEY_ID = "id";
-    private static final String KEY_ROLL_VALUE = "roll_value";
+    public static final String KEY_ROLL_NUMBER = "roll_number";
     private static final String KEY_RESULT = "result";
 
     public DatabaseHelper(Context context) {
@@ -21,7 +23,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     public void onCreate(SQLiteDatabase db) {
         String CREATE_RECORDS_TABLE = "CREATE TABLE " + TABLE_RECORDS + "("
                 + KEY_ID + " INTEGER PRIMARY KEY,"
-                + KEY_ROLL_VALUE + " INTEGER,"
+                + KEY_ROLL_NUMBER + " INTEGER,"
                 + KEY_RESULT + " INTEGER" + ")";
         db.execSQL(CREATE_RECORDS_TABLE);
     }
@@ -33,10 +35,10 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     }
 
     // Add a new roll entry
-    public void addRoll(int rollValue, int result) {
+    public void addRoll(int rollNumber, int result) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(KEY_ROLL_VALUE, rollValue);
+        values.put(KEY_ROLL_NUMBER, rollNumber);
         values.put(KEY_RESULT, result);
         db.insert(TABLE_RECORDS, null, values);
         db.close();
@@ -47,6 +49,4 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         SQLiteDatabase db = this.getReadableDatabase();
         return db.rawQuery("SELECT * FROM " + TABLE_RECORDS, null);
     }
-
-
 }
