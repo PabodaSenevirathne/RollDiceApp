@@ -1,12 +1,9 @@
 package com.example.rolldiceapp;
-
 import android.annotation.SuppressLint;
 import android.database.Cursor;
 import android.view.LayoutInflater;
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
