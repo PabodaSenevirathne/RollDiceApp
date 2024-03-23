@@ -54,7 +54,7 @@ public class ShowRecordsFragment extends Fragment {
             do {
                 @SuppressLint("Range") int rollId = cursor.getInt(cursor.getColumnIndex(DatabaseHelper.KEY_ID));
                 @SuppressLint("Range") int rollValue = cursor.getInt(cursor.getColumnIndex(DatabaseHelper.KEY_ROLL_VALUE));
-                stringBuilder.append("Roll ID: ").append(rollId).append(", Roll Value: ").append(rollValue).append("\n");
+                stringBuilder.append("Roll: ").append(rollId).append(", Roll Value: ").append(rollValue).append("\n");
             } while (cursor.moveToNext());
             result.setText(stringBuilder.toString());
         } else {
