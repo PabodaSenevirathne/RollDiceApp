@@ -2,7 +2,7 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="frame_background_color">#FFAEBC</color>
-    <color name="app_background_color">#FFAEBC</color>
+    <color name="frame_background_color">#FFFFFFFF</color>
+    <color name="app_background_color">#7EC458</color>
     <color name="roll_button_color">#FFAEBC</color>
 </resources>
