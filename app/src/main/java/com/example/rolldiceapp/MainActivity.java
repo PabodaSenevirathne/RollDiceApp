@@ -51,11 +51,11 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (!isRecordShown) {
                     showRecordsFragment();
-                    viewRecordButton.setText("Close"); // Change button text to "Close"
+                    viewRecordButton.setText("CLOSE"); // Change button text to "Close"
                     isRecordShown = true; // Records are shown
                 } else {
                     closeRecordsFragment();
-                    viewRecordButton.setText("View Records"); // Change button text back to "View Records"
+                    viewRecordButton.setText("VIEW RECORDS"); // Change button text back to "View Records"
                     isRecordShown = false; // Records are not shown
                 }
             }

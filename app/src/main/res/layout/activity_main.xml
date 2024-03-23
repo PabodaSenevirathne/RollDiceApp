@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center_horizontal"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp"
     tools:context=".MainActivity">
 
     <!-- App Title -->
@@ -13,10 +14,11 @@
         android:id="@+id/appTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="My Dice App"
-        android:textSize="24sp"
+        android:text="DICE ROLLER"
+        android:textSize="28sp"
         android:textStyle="bold"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="16dp" />
 
     <!-- Dice Image -->
     <ImageView
@@ -24,7 +26,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@null"
-        android:src="@drawable/dice_1"/>
+        android:src="@drawable/dice_1"
+        android:layout_marginBottom="16dp" />
 
     <!-- Roll Button -->
     <Button
@@ -32,34 +35,38 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/Button"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginBottom="16dp" />
 
     <!-- View Records Button -->
     <Button
         android:id="@+id/viewRecordButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="View Records"
-        android:layout_marginTop="16dp"/>
+        android:text="VIEW RECORDS"
+        android:layout_marginBottom="16dp" />
 
     <TextView
         android:id="@+id/result"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:text=""
-        android:layout_gravity="center" />
+        android:layout_marginBottom="16dp"
+        android:textSize="18sp"
+        android:textStyle="italic"
+        android:textColor="@color/frame_background_color" />
 
     <!-- Fragment Container with ScrollView -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2">
+        android:layout_weight="1"
+        android:layout_marginBottom="24dp">
 
         <FrameLayout
             android:id="@+id/fragment_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/frame_background_color"/>
+            android:background="@color/frame_background_color" />
+
     </ScrollView>
 </LinearLayout>
