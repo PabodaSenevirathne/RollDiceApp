@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView result;
     private DatabaseHelper dbHandler;
     private Button viewRecordButton;
+    private boolean isRecordShown = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,10 +38,26 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+//        viewRecordButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                showRecordsFragment();
+//            }
+//        });
+//    }
+
         viewRecordButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showRecordsFragment();
+                if (!isRecordShown) {
+                    showRecordsFragment();
+                    viewRecordButton.setText("Close"); // Change button text to "Close"
+                    isRecordShown = true; // Records are shown
+                } else {
+                    closeRecordsFragment();
+                    viewRecordButton.setText("View Records"); // Change button text back to "View Records"
+                    isRecordShown = false; // Records are not shown
+                }
             }
         });
     }
@@ -90,4 +107,8 @@ public class MainActivity extends AppCompatActivity {
                 .commit();
     }
 
+    // Close the records fragment
+    private void closeRecordsFragment() {
+        getSupportFragmentManager().popBackStack(); // Close the fragment
+    }
 }
