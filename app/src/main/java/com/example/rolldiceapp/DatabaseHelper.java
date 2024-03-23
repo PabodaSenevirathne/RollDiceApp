@@ -7,10 +7,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
+    public static final String KEY_ID =  "id";
     private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "recordsDB";
     private static final String TABLE_RECORDS = "records";
-    private static final String KEY_ID = "id";
     public static final String KEY_ROLL_VALUE = "roll_value";
     private static final String KEY_RESULT = "result";
 
