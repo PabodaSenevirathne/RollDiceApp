@@ -73,19 +73,19 @@ public class MainActivity extends AppCompatActivity {
                 imageView.setImageResource(R.drawable.dice_1);
                 break;
             case 2:
-                imageView.setImageResource(R.drawable.dice_1);
+                imageView.setImageResource(R.drawable.dice_2);
                 break;
             case 3:
-                imageView.setImageResource(R.drawable.dice_1);
+                imageView.setImageResource(R.drawable.dice_3);
                 break;
             case 4:
-                imageView.setImageResource(R.drawable.dice_1);
+                imageView.setImageResource(R.drawable.dice_4);
                 break;
             case 5:
-                imageView.setImageResource(R.drawable.dice_1);
+                imageView.setImageResource(R.drawable.dice_5);
                 break;
             case 6:
-                imageView.setImageResource(R.drawable.dice_1);
+                imageView.setImageResource(R.drawable.dice_6);
                 break;
         }
 
