@@ -3,6 +3,7 @@
     <style name="Base.Theme.RollDiceApp" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <item name="colorPrimary">@color/black</item>
+        <item name="android:textColor">@android:color/white</item>
     </style>
 
     <style name="Theme.RollDiceApp" parent="Base.Theme.RollDiceApp" />
