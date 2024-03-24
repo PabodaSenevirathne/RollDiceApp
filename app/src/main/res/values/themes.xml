@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.RollDiceApp" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <item name="colorPrimary">#BCBBBC</item>
+        <item name="colorPrimary">#579735</item>
         <item name="android:textColor">#EAEAEA</item>
     </style>
 
