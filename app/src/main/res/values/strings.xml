@@ -3,6 +3,8 @@
     <string name="Button">ROLL</string>
     <string name="app_title">DICE ROLLER</string>
     <string name="view_records_button">RECORDS</string>
+    <string name="button_text_view_records">RECORDS</string>
+    <string name="button_text_close">CLOSE</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
