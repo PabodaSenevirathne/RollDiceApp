@@ -10,7 +10,6 @@
     android:background="@color/app_background_color"
     tools:context=".MainActivity">
 
-    <!-- App Title -->
     <TextView
         android:id="@+id/appTitle"
         android:layout_width="wrap_content"
@@ -22,7 +21,6 @@
         android:layout_marginTop="32dp"
         android:layout_marginBottom="16dp" />
 
-    <!-- Dice Image -->
     <ImageView
         android:id="@+id/imageContainer"
         android:layout_width="wrap_content"
@@ -57,7 +55,6 @@
         android:textStyle="italic"
         android:textColor="@color/white" />
 
-    <!-- Fragment Container with ScrollView -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"

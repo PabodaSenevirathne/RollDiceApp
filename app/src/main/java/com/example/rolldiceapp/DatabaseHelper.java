@@ -14,10 +14,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String KEY_ROLL_VALUE = "roll_value";
     private static final String KEY_RESULT = "result";
 
+    // Constructor
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
+    // Create the db table
     @Override
     public void onCreate(SQLiteDatabase db) {
         String CREATE_RECORDS_TABLE = "CREATE TABLE " + TABLE_RECORDS + "("
@@ -27,8 +29,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_RECORDS_TABLE);
     }
 
+    // Upgrade the database
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        // Drop older tables
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_RECORDS);
         onCreate(db);
     }

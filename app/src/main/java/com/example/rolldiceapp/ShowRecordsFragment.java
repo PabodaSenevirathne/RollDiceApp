@@ -21,51 +21,38 @@ public class ShowRecordsFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_show_records, container, false);
+
+        // Initialize views and database helper
         result = view.findViewById(R.id.result);
         dbHandler = new DatabaseHelper(getActivity());
+        // Display records
         displayRecords();
         return view;
     }
 
-    // Display all records in the TextView
-//    private void displayRecords() {
-//        Cursor cursor = dbHandler.getAllRecords();
-//        StringBuilder stringBuilder = new StringBuilder();
-//        if (cursor.moveToFirst()) {
-//            do {
-//                @SuppressLint("Range") int rollNumber = cursor.getInt(cursor.getColumnIndex(DatabaseHelper.KEY_ROLL_NUMBER));
-//                stringBuilder.append("Roll Number: ").append(rollNumber).append("\n");
-//            } while (cursor.moveToNext());
-//            result.setText(stringBuilder.toString());
-//        } else {
-//            Toast.makeText(getActivity(), "No records found", Toast.LENGTH_SHORT).show();
-//        }
-//    }
+    // Method to display all records in the TextView
     private void displayRecords() {
+        // Get all records from the database
         Cursor cursor = dbHandler.getAllRecords();
         StringBuilder stringBuilder = new StringBuilder();
-
+        // Check if cursor is not null and contains data
         if (cursor != null && cursor.moveToFirst()) {
-//            do {
-//                @SuppressLint("Range") int rollNumber = cursor.getInt(cursor.getColumnIndex(DatabaseHelper.KEY_ROLL_VALUE));
-//                stringBuilder.append("Roll Number: ").append(rollNumber).append("\n");
-//            } while (cursor.moveToNext());
-//            result.setText(stringBuilder.toString());
+            // Iterate through the cursor and append record details to StringBuilder
             do {
                 @SuppressLint("Range") int rollId = cursor.getInt(cursor.getColumnIndex(DatabaseHelper.KEY_ID));
                 @SuppressLint("Range") int rollValue = cursor.getInt(cursor.getColumnIndex(DatabaseHelper.KEY_ROLL_VALUE));
                 stringBuilder.append("Roll: ").append(rollId).append(", Roll Value: ").append(rollValue).append("\n");
             } while (cursor.moveToNext());
+            // Set the text of the result TextView with the records
             result.setText(stringBuilder.toString());
         } else {
+            // If no records found, show a toast message
             Toast.makeText(getActivity(), "No records found", Toast.LENGTH_SHORT).show();
         }
 
-        // Close the cursor after use to prevent memory leaks
+        // Close the cursor
         if (cursor != null) {
             cursor.close();
         }
     }
-
-
 }

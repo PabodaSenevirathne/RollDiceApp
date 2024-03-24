@@ -12,9 +12,9 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
+    // Variables
     private Button button;
     private ImageView imageView;
-
     private TextView result;
     private DatabaseHelper dbHandler;
     private Button viewRecordButton;
@@ -25,12 +25,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Initialize variables with views from layout
         button = findViewById(R.id.button);
         viewRecordButton = findViewById(R.id.viewRecordButton);
         imageView = findViewById(R.id.imageContainer);
         result = findViewById(R.id.result);
         dbHandler = new DatabaseHelper(this);
 
+        // Set click listener for the roll button
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -38,25 +40,23 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-//        viewRecordButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                showRecordsFragment();
-//            }
-//        });
-//    }
-
+        // Set click listener for the view record button
         viewRecordButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Check if records fragment is already shown
                 if (!isRecordShown) {
+                    // Show records fragment
                     showRecordsFragment();
-                    viewRecordButton.setText(getString(R.string.button_text_close)); // Change button text to "Close"
-                    isRecordShown = true; // Records are shown
+                    // Change button text to "Close"
+                    viewRecordButton.setText(getString(R.string.button_text_close));
+                    isRecordShown = true;
                 } else {
+                    // Close records fragment
                     closeRecordsFragment();
-                    viewRecordButton.setText(getString(R.string.button_text_view_records)); // Change button text back to "View Records"
-                    isRecordShown = false; // Records are not shown
+                    // Change button text back to "View Records"
+                    viewRecordButton.setText(getString(R.string.button_text_view_records));
+                    isRecordShown = false;
                 }
             }
         });
@@ -65,9 +65,10 @@ public class MainActivity extends AppCompatActivity {
     // Roll the dice and update UI
     private void rollDice() {
         Random random = new Random();
-        int rollNumber = random.nextInt(6) + 1; // Generate random number from 1 to 6
+        // Generate random number from 1 to 6
+        int rollNumber = random.nextInt(6) + 1;
 
-        // Update dice image
+        // Update dice image based on roll number
         switch (rollNumber) {
             case 1:
                 imageView.setImageResource(R.drawable.dice_1);
@@ -89,12 +90,12 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
 
-        // Display roll result
+        // Display result
         result.setText("Result: " + rollNumber);
 
         // Add the roll to the database
         dbHandler.addRoll(rollNumber, rollNumber);
-
+        // Show toast message
         Toast.makeText(this, "Roll added successfully", Toast.LENGTH_SHORT).show();
     }
 
@@ -109,6 +110,7 @@ public class MainActivity extends AppCompatActivity {
 
     // Close the records fragment
     private void closeRecordsFragment() {
-        getSupportFragmentManager().popBackStack(); // Close the fragment
+        // Close the fragment
+        getSupportFragmentManager().popBackStack();
     }
 }

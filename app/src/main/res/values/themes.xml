@@ -5,6 +5,5 @@
         <item name="colorPrimary">#579735</item>
         <item name="android:textColor">#EAEAEA</item>
     </style>
-
     <style name="Theme.RollDiceApp" parent="Base.Theme.RollDiceApp" />
 </resources>
